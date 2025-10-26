@@ -9,16 +9,18 @@ const mongoURL = process.env.MONGO_URL || 'mongodb+srv://anand224037_db_user:C9L
 mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected successfully'))
   .catch(err => console.error('MongoDB connection error:', err));
+
+
+//Task 2 : write api with error handling and appropriate api mentioned in the TODO below
+// Employee Schema and Model
 const employeeSchema = new mongoose.Schema({
   name: { type: String, required: true },
   location: { type: String, required: true },
   position: { type: String, required: true },
   salary: { type: String, required: true }
 }, { timestamps: true });
+
 const Employee = mongoose.model('Employee', employeeSchema);
-
-//Task 2 : write api with error handling and appropriate api mentioned in the TODO below
-
 
 
 
@@ -104,6 +106,7 @@ app.put('/api/employeelist', async (req, res) => {
 app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname + '/dist/Frontend/index.html'));
 });
+
 
 
 
